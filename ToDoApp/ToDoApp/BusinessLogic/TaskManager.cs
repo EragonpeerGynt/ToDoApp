@@ -39,7 +39,7 @@ namespace ToDoApp.BusinessLogic
             {
                 if (request.Title == null)
                 {
-                    return new CreateResponse(false, "Each task requires to have at least title");
+                    return new CreateResponse(false, "Each task requires to have at least a title");
                 }
 
                 var task = new Models.Task()
