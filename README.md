@@ -1,0 +1,21 @@
+# Requirements
+
+- [x] Ustvari novo .NET Core spletno aplikacijo z imenom "ToDoApp".
+- [ ] Definiraj model "Task" z naslednjimi lastnostmi:
+    - [ ] Id (celo število)
+    - [ ] Naslov (besedilo)
+    - [ ] Opis (besedilo)
+    - [ ] DatumUstvarjanja (datum in čas)
+    - [ ] Opravljeno (logična vrednost)
+- [ ] Ustvari podatkovno bazo v SQL Serverju ali drugem primernem sistemu za
+upravljanje podatkovnih baz.
+- [ ] Izvedi migracije, da ustvariš ustrezno tabelo za hranjenje nalog.
+- [ ] Implementiraj CRUD (Create, Read, Update, Delete) operacije za upravljanje nalog v
+razredu "TaskController".
+- [ ] Vse operacije za dostop do podatkov naj uporabljajo SQL poizvedbe za delo s
+podatkovno bazo.
+- [ ] Za testiranje delovanja CRUD operacij uporabi swagger ali postman aplikacijo, za
+klicanje funkcij (BE API-jev). V primeru, da boš imel/a pripravljene klice BE API-jev v
+nekem drugem orodju, prosim, da priložiš template, kako klicati API-je.
+- [ ] Zagotovi ustrezno preverjanje napak in obvladovanje izjemnih stanj v aplikaciji.
+- [ ] Implementiraj tudi unit-teste za vse CRUD operacije.
