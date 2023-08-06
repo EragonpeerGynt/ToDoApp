@@ -162,18 +162,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller?title=Naredi nalogo",
+							"raw": "{{LocalhostUrl}}/taskcontroller",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
 								"taskcontroller"
-							],
-							"query": [
-								{
-									"key": "title",
-									"value": "Naredi nalogo"
-								}
 							]
 						}
 					},
@@ -230,6 +224,32 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Primer kreiranja nove ToDo naloge, ki je že bila zaključena",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Title\": \"Testni ToDo\",\r\n    \"Description\": \"Primer ustvarjanja ToDo naloge z dodanim opisom\",\r\n    \"Completed\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LocalhostUrl}}/taskcontroller",
+							"host": [
+								"{{LocalhostUrl}}"
+							],
+							"path": [
+								"taskcontroller"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "Zbirka klicev za kreacijo novih nalog"
@@ -244,7 +264,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Title\": \"Primer posodobitve naslova\",\r\n    \"Description\": \"Primer posodobitve opisa\",\r\n    \"Completed\": true\r\n}",
+							"raw": "{\r\n    \"Title\": \"Primer posodobitve naslova\",\r\n    \"Description\": \"Primer posodobitve opisa\",\r\n    \"Completed\": false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -252,18 +272,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller?id=2",
+							"raw": "{{LocalhostUrl}}/taskcontroller/14",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "2"
-								}
+								"taskcontroller",
+								"14"
 							]
 						}
 					},
@@ -284,12 +299,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller",
+							"raw": "{{LocalhostUrl}}/taskcontroller/14",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller"
+								"taskcontroller",
+								"14"
 							]
 						}
 					},
@@ -307,18 +323,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller?id=2",
+							"raw": "{{LocalhostUrl}}/taskcontroller/14",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "2"
-								}
+								"taskcontroller",
+								"14"
 							]
 						}
 					},

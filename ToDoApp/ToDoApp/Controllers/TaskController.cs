@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using System.Net;
 using ToDoApp.BusinessLogic;
 using ToDoApp.Interfaces;
@@ -14,7 +16,7 @@ namespace ToDoApp.Controllers
 
         public TaskController(ITaskManager taskManager)
         {
-            _taskManager = taskManager as TaskManager;
+            _taskManager = (TaskManager)taskManager;
         }
 
         [HttpGet]
@@ -38,7 +40,8 @@ namespace ToDoApp.Controllers
         }
 
         [HttpPatch]
-        public IActionResult Update([FromQuery] int? id, [FromBody]UpdateTaskRequest task)
+        [Route("{id}")]
+        public IActionResult Update([Required][FromRoute]int id, [FromBody]UpdateTaskRequest task)
         {
             UpdateResponse response = _taskManager.UpdateTask(id, task);
             if (response.Success)
@@ -52,7 +55,8 @@ namespace ToDoApp.Controllers
         }
 
         [HttpDelete]
-        public IActionResult Update([FromQuery] int? id)
+        [Route("{id}")]
+        public IActionResult Update([Required][FromRoute]int id)
         {
             DeleteResponse response = _taskManager.DeleteTask(id);
 

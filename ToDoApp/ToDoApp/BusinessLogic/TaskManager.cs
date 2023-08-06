@@ -47,7 +47,7 @@ namespace ToDoApp.BusinessLogic
                     Naslov = request.Title,
                     Opis = request.Description,
                     DatumUstvarjanja = DateTime.Now,
-                    Opravljeno = false
+                    Opravljeno = request.Completed ?? false,
                 };
                 _context.Tasks.Add(task);
                 _context.SaveChanges();
