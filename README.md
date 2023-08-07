@@ -15,3 +15,11 @@ upravljanje podatkovnih baz.
 - [x] Za testiranje delovanja CRUD operacij uporabi swagger ali postman aplikacijo, za klicanje funkcij (BE API-jev). V primeru, da boš imel/a pripravljene klice BE API-jev v nekem drugem orodju, prosim, da priložiš template, kako klicati API-je.
 - [x] Zagotovi ustrezno preverjanje napak in obvladovanje izjemnih stanj v aplikaciji.
 - [x] Implementiraj tudi unit-teste za vse CRUD operacije.
+
+# Dodatna navodila:
+
+V mapi [PostmanExamples](./PostmanExamples/) se nahaja JSON datoteka narejena preko funkcije izvoza v postmanu (V2.1), kjer definirani primeri klicev.  
+V mapi [SqlScripts](./SqlScripts/) se nahaja SQL skripta namenjana ponovnemu ustvarjanju baze, ki je bila narejena za projekt.  
+V mapi [ToDoAppTest](./ToDoAppTest/) se nahajajo avtomatski testi delovanja aplikacije narejeni v MStest framework-u.  
+V mapi [ToDoApp](./ToDoApp/) se nahaja sama ASP.net aplikacija ki je bila narejena v okviru te naloge.  
+Swagger dokumentacija je avtomatsko generirana in se po zagonu strežnika/aplikacije nahaja na (UriAplikacije)/swagger/index.html
