@@ -11,7 +11,7 @@
 upravljanje podatkovnih baz.
 - [x] Izvedi migracije, da ustvariš ustrezno tabelo za hranjenje nalog.
 - [x] Implementiraj CRUD (Create, Read, Update, Delete) operacije za upravljanje nalog v razredu "TaskController".
-- [ ] Vse operacije za dostop do podatkov naj uporabljajo SQL poizvedbe za delo s podatkovno bazo.
+- [x] Vse operacije za dostop do podatkov naj uporabljajo SQL poizvedbe za delo s podatkovno bazo.
 - [x] Za testiranje delovanja CRUD operacij uporabi swagger ali postman aplikacijo, za klicanje funkcij (BE API-jev). V primeru, da boš imel/a pripravljene klice BE API-jev v nekem drugem orodju, prosim, da priložiš template, kako klicati API-je.
-- [ ] Zagotovi ustrezno preverjanje napak in obvladovanje izjemnih stanj v aplikaciji.
-- [ ] Implementiraj tudi unit-teste za vse CRUD operacije.
+- [x] Zagotovi ustrezno preverjanje napak in obvladovanje izjemnih stanj v aplikaciji.
+- [x] Implementiraj tudi unit-teste za vse CRUD operacije.

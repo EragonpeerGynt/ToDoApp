@@ -272,12 +272,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller/14",
+							"raw": "{{LocalhostUrl}}/taskcontroller/id/14",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
 								"taskcontroller",
+								"id",
 								"14"
 							]
 						}
@@ -299,12 +300,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller/14",
+							"raw": "{{LocalhostUrl}}/taskcontroller/id/14",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
 								"taskcontroller",
+								"id",
 								"14"
 							]
 						}
@@ -323,12 +325,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller/14",
+							"raw": "{{LocalhostUrl}}/taskcontroller/id/14",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
 								"taskcontroller",
+								"id",
 								"14"
 							]
 						}

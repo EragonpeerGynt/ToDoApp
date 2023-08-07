@@ -40,7 +40,7 @@ namespace ToDoApp.Controllers
         }
 
         [HttpPatch]
-        [Route("{id}")]
+        [Route("id/{id}")]
         public IActionResult Update([Required][FromRoute]int id, [FromBody]UpdateTaskRequest task)
         {
             UpdateResponse response = _taskManager.UpdateTask(id, task);
@@ -55,8 +55,8 @@ namespace ToDoApp.Controllers
         }
 
         [HttpDelete]
-        [Route("{id}")]
-        public IActionResult Update([Required][FromRoute]int id)
+        [Route("id/{id}")]
+        public IActionResult Delete([Required][FromRoute]int id)
         {
             DeleteResponse response = _taskManager.DeleteTask(id);
 
