@@ -23,3 +23,10 @@ V mapi [SqlScripts](./SqlScripts/) se nahaja SQL skripta namenjana ponovnemu ust
 V mapi [ToDoAppTest](./ToDoAppTest/) se nahajajo avtomatski testi delovanja aplikacije narejeni v MStest framework-u.  
 V mapi [ToDoApp](./ToDoApp/) se nahaja sama ASP.net aplikacija ki je bila narejena v okviru te naloge.  
 Swagger dokumentacija je avtomatsko generirana in se po zagonu strežnika/aplikacije nahaja na "default route" (\/) spletne aplikacije.
+
+# Uporabljene tehnologije
+
+- SSMS 19
+- MS SQL server 2022
+- dotnet 7
+- Visual Studio 2022

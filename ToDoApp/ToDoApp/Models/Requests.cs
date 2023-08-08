@@ -7,16 +7,16 @@ namespace ToDoApp.Models
     {
 
         /// <summary>
-        /// Naslov ToDo naloge, ki bo ustvarjena
+        /// Naslov ToDo naloge
         /// </summary>
         [JsonProperty("Title", Required = Required.Always)]
         public string Title { set; get; }
         /// <summary>
-        /// Opis ToDo naloge, ki bo ustvarjena
+        /// Opis ToDo naloge
         /// </summary>
         public string? Description { set; get; }
         /// <summary>
-        /// Status ToDo naloge, ki bo ustvarjena
+        /// Statusa opravljenosti ToDo naloge (Če ni definiran se nastavi na "false")
         /// </summary>
         public bool? Completed { set; get; }
     }
@@ -24,15 +24,15 @@ namespace ToDoApp.Models
     public class UpdateTaskRequest
     {
         /// <summary>
-        /// Nov naslov ToDo naloge, ki jo posodabljamo
+        /// Nov naslov ToDo naloge
         /// </summary>
         public string? Title { set; get; }
         /// <summary>
-        /// Nov opis ToDo naloge, ki jo posodabljamo
+        /// Nov opis ToDo naloge
         /// </summary>
         public string? Description { set; get; }
         /// <summary>
-        /// Sprememba statusa opravljenosti ToDo naloge
+        /// Statusa opravljenosti ToDo naloge
         /// </summary>
         public bool? Completed { set; get; }
     }

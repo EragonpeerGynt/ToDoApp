@@ -20,7 +20,7 @@ namespace ToDoApp.Controllers
         }
 
         /// <summary>
-        /// Endpoint namenjen pridobivanju ToDo nalog iz zaledne baze.
+        /// Metoda namenjen pridobivanju ToDo nalog iz zaledne baze.
         /// </summary>
         /// <param name="id">Id naloge</param>
         /// <param name="createdfrom">Iskanje ToDo nalog narejenih po vnešenem datumu</param>
@@ -31,7 +31,7 @@ namespace ToDoApp.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(List<RetrieveTaskResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public IActionResult Id([FromQuery]int? id, [FromQuery]DateTime? createdfrom, [FromQuery]DateTime? createdto, [FromQuery]bool? completed, [FromQuery]string? title)
+        public IActionResult Id([FromQuery] int? id, [FromQuery] DateTime? createdfrom, [FromQuery] DateTime? createdto, [FromQuery] bool? completed, [FromQuery] string? title)
         {
             try
             {
@@ -44,37 +44,35 @@ namespace ToDoApp.Controllers
         }
 
         /// <summary>
-        /// Endpoint namenjen ustvarjanju novih ToDo nalog.
+        /// Metoda namenjen ustvarjanju novih ToDo nalog.
         /// </summary>
-        /// <param name="task">Objekt v katerem so shranjeni podatki za ustvarjanje nove ToDo naloge</param>
         /// <returns></returns>
         [HttpPost]
-        [ProducesResponseType(typeof(CreateResponse), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(CreateResponse), StatusCodes.Status400BadRequest)]
-        public IActionResult Create([FromBody]CreateTaskRequest task)
+        [ProducesResponseType(typeof(CreateResponseOnlyId), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CreateResponseException), StatusCodes.Status400BadRequest)]
+        public IActionResult Create([FromBody] CreateTaskRequest task)
         {
             CreateResponse response = _taskManager.CreateTask(task);
             if (response.Success)
             {
-                return Ok(response);
+                return Ok(new CreateResponseOnlyId(response.Id));
             }
             else
             {
-                return BadRequest(response);
+                return BadRequest(new CreateResponseException(response.Success, response.Description));
             }
         }
 
         /// <summary>
-        /// Endpoint namenjen posodabljanu obstoječih ToDo nalog.
+        /// Metoda namenjen posodabljanu obstoječih ToDo nalog.
         /// </summary>
         /// <param name="id">Id ToDo naloge, ki jo želimo posodobiti</param>
-        /// <param name="task">Objekt v katerem so shranjeni podatki za posodobitev obstoječe ToDo naloge</param>
         /// <returns></returns>
         [HttpPatch]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(UpdateResponse), StatusCodes.Status400BadRequest)]
         [Route("id/{id}")]
-        public IActionResult Update([Required][FromRoute]int id, [FromBody]UpdateTaskRequest task)
+        public IActionResult Update([Required][FromRoute] int id, [FromBody] UpdateTaskRequest task)
         {
             UpdateResponse response = _taskManager.UpdateTask(id, task);
             if (response.Success)
@@ -88,7 +86,7 @@ namespace ToDoApp.Controllers
         }
 
         /// <summary>
-        /// Endpoint namenjen brisanju obstoječih ToDo nalog.
+        /// Metoda namenjen brisanju obstoječih ToDo nalog.
         /// </summary>
         /// <param name="id">Id ToDo naloge, ki jo želimo izbrisati</param>
         /// <returns></returns>
@@ -96,7 +94,7 @@ namespace ToDoApp.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(DeleteResponse), StatusCodes.Status400BadRequest)]
         [Route("id/{id}")]
-        public IActionResult Delete([Required][FromRoute]int id)
+        public IActionResult Delete([Required][FromRoute] int id)
         {
             DeleteResponse response = _taskManager.DeleteTask(id);
 

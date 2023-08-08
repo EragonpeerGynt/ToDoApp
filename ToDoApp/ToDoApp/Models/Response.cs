@@ -86,4 +86,23 @@ namespace ToDoApp.Models
             Id = id;
         }
     }
+
+    public class CreateResponseException : GeneralModificationResponse
+    {
+        public CreateResponseException(bool success = true, string description = null) : base(success, description) { }
+    }
+
+    public class CreateResponseOnlyId
+    {
+        /// <summary>
+        /// Id ustvarjene naloge
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public int? Id { get; set; }
+
+        public CreateResponseOnlyId(int? id)
+        {
+            Id = id;
+        }
+    }
 }
