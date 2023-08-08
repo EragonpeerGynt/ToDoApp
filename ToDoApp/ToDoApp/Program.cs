@@ -4,6 +4,9 @@ using Microsoft.Extensions.Configuration;
 using ToDoApp.BusinessLogic;
 using ToDoApp.Interfaces;
 using ToDoApp.Models;
+using Microsoft.AspNetCore.Rewrite;
+using Azure;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,5 +47,8 @@ static void SwaggerRegistration(WebApplicationBuilder builder)
 static void SwaggerStartup(WebApplication app)
 {
     app.UseOpenApi();
-    app.UseSwaggerUi3();
+    app.UseSwaggerUi3(options =>
+    {
+        options.Path = string.Empty;
+    });
 }

@@ -39,7 +39,7 @@ namespace ToDoAppTest
         //Try to delete this task
         public async System.Threading.Tasks.Task Test_NormalProcess()
         {
-            var response = await _httpClient.PostAsJsonAsync<CreateTaskRequest>("taskcontroller", new CreateTaskRequest
+            var response = await _httpClient.PostAsJsonAsync<CreateTaskRequest>("task", new CreateTaskRequest
             {
                 Title = _title1,
                 Description = "Automatic Test full description"
@@ -48,7 +48,7 @@ namespace ToDoAppTest
             var statusCode = response.StatusCode;
             Assert.AreEqual(System.Net.HttpStatusCode.OK, statusCode);
 
-            response = await _httpClient.GetAsync($"taskcontroller?title={_title1}");
+            response = await _httpClient.GetAsync($"task?title={_title1}");
             var stringResult = await response.Content.ReadAsStringAsync();
 
             var options = new JsonSerializerOptions
@@ -68,14 +68,14 @@ namespace ToDoAppTest
 
             _id1 = matchedTasks?.OrderByDescending(task => task.CreatedOn).FirstOrDefault()?.Id;
 
-            response = await _httpClient.PatchAsJsonAsync($"taskcontroller/id/{_id1}", new CreateTaskRequest
+            response = await _httpClient.PatchAsJsonAsync($"task/id/{_id1}", new CreateTaskRequest
             {
                 Completed = true
             });
             statusCode = response.StatusCode;
             Assert.AreEqual(System.Net.HttpStatusCode.OK, statusCode);
 
-            response = await _httpClient.GetAsync($"taskcontroller?id={_id1}");
+            response = await _httpClient.GetAsync($"task?id={_id1}");
             stringResult = await response.Content.ReadAsStringAsync();
 
             matchedTasks =
@@ -89,7 +89,7 @@ namespace ToDoAppTest
             bool? completed = matchedTasks?.OrderByDescending(task => task.CreatedOn).FirstOrDefault()?.Completed;
             Assert.AreEqual(completed, true, $"Title should be same as searched title");
 
-            response = await _httpClient.DeleteAsync($"taskcontroller/id/{_id1}");
+            response = await _httpClient.DeleteAsync($"task/id/{_id1}");
 
             statusCode = response.StatusCode;
             Assert.AreEqual(System.Net.HttpStatusCode.OK, statusCode);
@@ -102,7 +102,7 @@ namespace ToDoAppTest
         //Try to delete this task
         public async System.Threading.Tasks.Task Test_NormalProcessForgottenDescription()
         {
-            var response = await _httpClient.PostAsJsonAsync<CreateTaskRequest>("taskcontroller", new CreateTaskRequest
+            var response = await _httpClient.PostAsJsonAsync<CreateTaskRequest>("task", new CreateTaskRequest
             {
                 Title = _title2
             });
@@ -110,7 +110,7 @@ namespace ToDoAppTest
             var statusCode = response.StatusCode;
             Assert.AreEqual(System.Net.HttpStatusCode.OK, statusCode);
 
-            response = await _httpClient.GetAsync($"taskcontroller?title={_title2}");
+            response = await _httpClient.GetAsync($"task?title={_title2}");
             var stringResult = await response.Content.ReadAsStringAsync();
 
             var options = new JsonSerializerOptions
@@ -130,14 +130,14 @@ namespace ToDoAppTest
 
             _id2 = matchedTasks?.OrderByDescending(task => task.CreatedOn).FirstOrDefault()?.Id;
 
-            response = await _httpClient.PatchAsJsonAsync($"taskcontroller/id/{_id2}", new CreateTaskRequest
+            response = await _httpClient.PatchAsJsonAsync($"task/id/{_id2}", new CreateTaskRequest
             {
                 Description = _title2
             });
             statusCode = response.StatusCode;
             Assert.AreEqual(System.Net.HttpStatusCode.OK, statusCode);
 
-            response = await _httpClient.GetAsync($"taskcontroller?id={_id2}");
+            response = await _httpClient.GetAsync($"task?id={_id2}");
             stringResult = await response.Content.ReadAsStringAsync();
 
             matchedTasks =
@@ -151,7 +151,7 @@ namespace ToDoAppTest
             string? foundDescription = matchedTasks?.OrderByDescending(task => task.CreatedOn).FirstOrDefault()?.Description;
             Assert.AreEqual(foundTitle, _title2, $"Title should be same as searched title");
 
-            response = await _httpClient.DeleteAsync($"taskcontroller/id/{_id2}");
+            response = await _httpClient.DeleteAsync($"task/id/{_id2}");
 
             statusCode = response.StatusCode;
             Assert.AreEqual(System.Net.HttpStatusCode.OK, statusCode);
@@ -163,7 +163,7 @@ namespace ToDoAppTest
         //Try to delete this task
         public async System.Threading.Tasks.Task Test_IninitiallyCompletedTaskThatWasntCompleted()
         {
-            var response = await _httpClient.PostAsJsonAsync<CreateTaskRequest>("taskcontroller", new CreateTaskRequest
+            var response = await _httpClient.PostAsJsonAsync<CreateTaskRequest>("task", new CreateTaskRequest
             {
                 Title = _title3,
                 Description = "Automatic Test full description",
@@ -173,7 +173,7 @@ namespace ToDoAppTest
             var statusCode = response.StatusCode;
             Assert.AreEqual(System.Net.HttpStatusCode.OK, statusCode);
 
-            response = await _httpClient.GetAsync($"taskcontroller?title={_title3}");
+            response = await _httpClient.GetAsync($"task?title={_title3}");
             var stringResult = await response.Content.ReadAsStringAsync();
 
             var options = new JsonSerializerOptions
@@ -193,7 +193,7 @@ namespace ToDoAppTest
 
             _id3 = matchedTasks?.OrderByDescending(task => task.CreatedOn).FirstOrDefault()?.Id;
 
-            response = await _httpClient.DeleteAsync($"taskcontroller/id/{_id3}");
+            response = await _httpClient.DeleteAsync($"task/id/{_id3}");
 
             statusCode = response.StatusCode;
             Assert.AreEqual(System.Net.HttpStatusCode.OK, statusCode);
@@ -203,7 +203,7 @@ namespace ToDoAppTest
         //Try to create new complete task without title that should be rejected
         public async System.Threading.Tasks.Task Test_CreateTaskWithoutTitle()
         {
-            var response = await _httpClient.PostAsJsonAsync<CreateTaskRequest>("taskcontroller", new CreateTaskRequest());
+            var response = await _httpClient.PostAsJsonAsync<CreateTaskRequest>("task", new CreateTaskRequest());
 
             var statusCode = response.StatusCode;
             Assert.AreEqual(System.Net.HttpStatusCode.BadRequest, statusCode);
@@ -213,7 +213,7 @@ namespace ToDoAppTest
         //Try to get all tasks currently in database
         public async System.Threading.Tasks.Task Test_GetAllTasks()
         {
-            var response = await _httpClient.GetAsync("taskcontroller");
+            var response = await _httpClient.GetAsync("task");
 
             var statusCode = response.StatusCode;
             Assert.AreEqual(System.Net.HttpStatusCode.OK, statusCode, "Status code should be OK");

@@ -15,12 +15,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller",
+							"raw": "{{LocalhostUrl}}/task",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller"
+								"task"
 							]
 						}
 					},
@@ -32,12 +32,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller?id=2",
+							"raw": "{{LocalhostUrl}}/task?id=2",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller"
+								"task"
 							],
 							"query": [
 								{
@@ -55,12 +55,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller?title=Naredi nalogo",
+							"raw": "{{LocalhostUrl}}/task?title=Naredi nalogo",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller"
+								"task"
 							],
 							"query": [
 								{
@@ -78,12 +78,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller?createdfrom=2023-01-01",
+							"raw": "{{LocalhostUrl}}/task?createdfrom=2023-01-01",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller"
+								"task"
 							],
 							"query": [
 								{
@@ -101,12 +101,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller?createdto=2024-01-01",
+							"raw": "{{LocalhostUrl}}/task?createdto=2024-01-01",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller"
+								"task"
 							],
 							"query": [
 								{
@@ -124,12 +124,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller?completed=false",
+							"raw": "{{LocalhostUrl}}/task?completed=false",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller"
+								"task"
 							],
 							"query": [
 								{
@@ -162,12 +162,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller",
+							"raw": "{{LocalhostUrl}}/task",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller"
+								"task"
 							]
 						}
 					},
@@ -188,12 +188,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller",
+							"raw": "{{LocalhostUrl}}/task",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller"
+								"task"
 							]
 						}
 					},
@@ -214,12 +214,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller",
+							"raw": "{{LocalhostUrl}}/task",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller"
+								"task"
 							]
 						}
 					},
@@ -240,12 +240,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller",
+							"raw": "{{LocalhostUrl}}/task",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller"
+								"task"
 							]
 						}
 					},
@@ -272,12 +272,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller/id/14",
+							"raw": "{{LocalhostUrl}}/task/id/14",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller",
+								"task",
 								"id",
 								"14"
 							]
@@ -300,12 +300,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller/id/14",
+							"raw": "{{LocalhostUrl}}/task/id/14",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller",
+								"task",
 								"id",
 								"14"
 							]
@@ -325,12 +325,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{LocalhostUrl}}/taskcontroller/id/14",
+							"raw": "{{LocalhostUrl}}/task/id/14",
 							"host": [
 								"{{LocalhostUrl}}"
 							],
 							"path": [
-								"taskcontroller",
+								"task",
 								"id",
 								"14"
 							]

@@ -22,4 +22,4 @@ V mapi [PostmanExamples](./PostmanExamples/) se nahaja JSON datoteka narejena pr
 V mapi [SqlScripts](./SqlScripts/) se nahaja SQL skripta namenjana ponovnemu ustvarjanju baze, ki je bila narejena za projekt.  
 V mapi [ToDoAppTest](./ToDoAppTest/) se nahajajo avtomatski testi delovanja aplikacije narejeni v MStest framework-u.  
 V mapi [ToDoApp](./ToDoApp/) se nahaja sama ASP.net aplikacija ki je bila narejena v okviru te naloge.  
-Swagger dokumentacija je avtomatsko generirana in se po zagonu strežnika/aplikacije nahaja na (UriAplikacije)/swagger/index.html
+Swagger dokumentacija je avtomatsko generirana in se po zagonu strežnika/aplikacije nahaja na "default route" (\/) spletne aplikacije.

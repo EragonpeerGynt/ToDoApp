@@ -51,7 +51,7 @@ namespace ToDoApp.BusinessLogic
                 };
                 _context.Tasks.Add(task);
                 _context.SaveChanges();
-                return new CreateResponse();
+                return new CreateResponse(task.Id);
             }
 
             catch (Exception ex)

@@ -9,7 +9,7 @@ using ToDoApp.Models;
 
 namespace ToDoApp.Controllers
 {
-    [Route("taskcontroller")]
+    [Route("task")]
     public class TaskController : Controller
     {
         private ITaskManager _taskManager { get; }
@@ -22,11 +22,11 @@ namespace ToDoApp.Controllers
         /// <summary>
         /// Endpoint namenjen pridobivanju ToDo nalog iz zaledne baze.
         /// </summary>
-        /// <param name="id">Id po katerem iščemo med ToDo nalogami</param>
+        /// <param name="id">Id naloge</param>
         /// <param name="createdfrom">Iskanje ToDo nalog narejenih po vnešenem datumu</param>
         /// <param name="createdto">Iskanje ToDo nalog narejenih pred vnešenim datumom</param>
-        /// <param name="completed">Iskanje ToDo nalog, ki so v specifičnem statusu opravljenosti</param>
-        /// <param name="title">Naslov po katerem iščemo med ToDo nalogami</param>
+        /// <param name="completed">Status opravljenosti</param>
+        /// <param name="title">Naslov naloge</param>
         /// <returns>Seznam vseh ToDo nalog, ki ustrezajo specificiranim pogojem</returns>
         [HttpGet]
         [ProducesResponseType(typeof(List<RetrieveTaskResponse>), StatusCodes.Status200OK)]
@@ -49,18 +49,18 @@ namespace ToDoApp.Controllers
         /// <param name="task">Objekt v katerem so shranjeni podatki za ustvarjanje nove ToDo naloge</param>
         /// <returns></returns>
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(CreateResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CreateResponse), StatusCodes.Status400BadRequest)]
         public IActionResult Create([FromBody]CreateTaskRequest task)
         {
             CreateResponse response = _taskManager.CreateTask(task);
             if (response.Success)
             {
-                return Ok();
+                return Ok(response);
             }
             else
             {
-                return BadRequest(response.Description);
+                return BadRequest(response);
             }
         }
 
@@ -72,7 +72,7 @@ namespace ToDoApp.Controllers
         /// <returns></returns>
         [HttpPatch]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(UpdateResponse), StatusCodes.Status400BadRequest)]
         [Route("id/{id}")]
         public IActionResult Update([Required][FromRoute]int id, [FromBody]UpdateTaskRequest task)
         {
@@ -83,7 +83,7 @@ namespace ToDoApp.Controllers
             }
             else
             {
-                return BadRequest(response.Description);
+                return BadRequest(response);
             }
         }
 
@@ -94,7 +94,7 @@ namespace ToDoApp.Controllers
         /// <returns></returns>
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(DeleteResponse), StatusCodes.Status400BadRequest)]
         [Route("id/{id}")]
         public IActionResult Delete([Required][FromRoute]int id)
         {
@@ -106,7 +106,7 @@ namespace ToDoApp.Controllers
             }
             else
             {
-                return BadRequest(response.Description);
+                return BadRequest(response);
             }
         }
     }

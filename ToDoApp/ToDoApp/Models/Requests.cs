@@ -5,10 +5,11 @@ namespace ToDoApp.Models
 {
     public class CreateTaskRequest
     {
-        [JsonProperty("Title", Required = Required.Always)]
+
         /// <summary>
         /// Naslov ToDo naloge, ki bo ustvarjena
         /// </summary>
+        [JsonProperty("Title", Required = Required.Always)]
         public string Title { set; get; }
         /// <summary>
         /// Opis ToDo naloge, ki bo ustvarjena
