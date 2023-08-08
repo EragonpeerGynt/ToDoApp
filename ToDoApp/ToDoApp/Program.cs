@@ -1,43 +1,54 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using ToDoApp.BusinessLogic;
 using ToDoApp.Interfaces;
 using ToDoApp.Models;
+using Microsoft.AspNetCore.Rewrite;
+using Azure;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-ControllerStartup(builder);
+ControllerRegistration(builder);
+SwaggerRegistration(builder);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+SwaggerStartup(app);
 app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllers();
 
 app.Run();
 
-static void ControllerStartup(WebApplicationBuilder? builder)
+static void ControllerRegistration(WebApplicationBuilder builder)
 {
+    string sqlServer = builder.Configuration.GetSection("ConnectionStrings:SqlServer").Get<string>();
     builder.Services.AddDbContext<ToDoAppContext>(options =>
     {
-        options.UseSqlServer("Server=DESKTOP-FBGOG4O\\TODOAPP;Database=ToDoApp;Trusted_Connection=True;TrustServerCertificate=True;");
+        options.UseSqlServer(sqlServer);
     });
     builder.Services.AddScoped<ITaskManager, TaskManager>();
+}
+
+static void SwaggerRegistration(WebApplicationBuilder builder)
+{
+    builder.Services.AddSwaggerDocument();
+}
+
+static void SwaggerStartup(WebApplication app)
+{
+    app.UseOpenApi();
+    app.UseSwaggerUi3(options =>
+    {
+        options.Path = string.Empty;
+    });
 }

@@ -1,0 +1,344 @@
+{
+	"info": {
+		"_postman_id": "31259054-65f6-44d6-91bc-094fa8e6f56f",
+		"name": "ToDoApp calls",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28968454"
+	},
+	"item": [
+		{
+			"name": "Pridobi ToDo naloge",
+			"item": [
+				{
+					"name": "Pridobi vse ToDo naloge",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LocalhostUrl}}/task",
+							"host": [
+								"{{LocalhostUrl}}"
+							],
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pridobi specifično ToDo nalogo po ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LocalhostUrl}}/task?id=2",
+							"host": [
+								"{{LocalhostUrl}}"
+							],
+							"path": [
+								"task"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pridobi ToDo naloge s specifičnim naslovom",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LocalhostUrl}}/task?title=Naredi nalogo",
+							"host": [
+								"{{LocalhostUrl}}"
+							],
+							"path": [
+								"task"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Naredi nalogo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pridobi ToDo naloge narejene po specifičnem datumu in uri",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LocalhostUrl}}/task?createdfrom=2023-01-01",
+							"host": [
+								"{{LocalhostUrl}}"
+							],
+							"path": [
+								"task"
+							],
+							"query": [
+								{
+									"key": "createdfrom",
+									"value": "2023-01-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pridobi ToDo naloge nerejene pred specifičnim datumom in uro",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LocalhostUrl}}/task?createdto=2024-01-01",
+							"host": [
+								"{{LocalhostUrl}}"
+							],
+							"path": [
+								"task"
+							],
+							"query": [
+								{
+									"key": "createdto",
+									"value": "2024-01-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pridobi ToDo naloge, ki še niso bile zaključene",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LocalhostUrl}}/task?completed=false",
+							"host": [
+								"{{LocalhostUrl}}"
+							],
+							"path": [
+								"task"
+							],
+							"query": [
+								{
+									"key": "completed",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Shramba za primere klicev, ki se uporabljajo za pridobitev ToDo nalog."
+		},
+		{
+			"name": "Ustvari nove ToDo naloge",
+			"item": [
+				{
+					"name": "Primer kreiranja nove ToDo naloge z opisom",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Title\": \"Testni ToDo\",\r\n    \"Description\": \"Primer ustvarjanja ToDo naloge z dodanim opisom\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LocalhostUrl}}/task",
+							"host": [
+								"{{LocalhostUrl}}"
+							],
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Primer kreiranja nove ToDo naloge brez opisa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Title\": \"Testni ToDo brez opisa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LocalhostUrl}}/task",
+							"host": [
+								"{{LocalhostUrl}}"
+							],
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Primer poizkusa kreiranja ToDo naloge brez naslova (Napaka, ker je naslov obvezen)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LocalhostUrl}}/task",
+							"host": [
+								"{{LocalhostUrl}}"
+							],
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Primer kreiranja nove ToDo naloge, ki je že bila zaključena",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Title\": \"Testni ToDo\",\r\n    \"Description\": \"Primer ustvarjanja ToDo naloge z dodanim opisom\",\r\n    \"Completed\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LocalhostUrl}}/task",
+							"host": [
+								"{{LocalhostUrl}}"
+							],
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Zbirka klicev za kreacijo novih nalog"
+		},
+		{
+			"name": "Posodobi obstoječe ToDo naloge",
+			"item": [
+				{
+					"name": "Posodobi naslov, opis in opravljenos ToDo naloge",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Title\": \"Primer posodobitve naslova\",\r\n    \"Description\": \"Primer posodobitve opisa\",\r\n    \"Completed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LocalhostUrl}}/task/id/14",
+							"host": [
+								"{{LocalhostUrl}}"
+							],
+							"path": [
+								"task",
+								"id",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Poizkus posodobitve ToDo naloge brez specifikacije ID-ja ToDo naloge",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Title\": \"Primer posodobitve naslova\",\r\n    \"Description\": \"Primer posodobitve opisa\",\r\n    \"Completed\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LocalhostUrl}}/task/id/14",
+							"host": [
+								"{{LocalhostUrl}}"
+							],
+							"path": [
+								"task",
+								"id",
+								"14"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Primeri posodabljanja obstoječih ToDo nalog"
+		},
+		{
+			"name": "Izbris obstoječe ToDo naloge",
+			"item": [
+				{
+					"name": "Izbris specifične ToDo naloge na podlagi ID-ja",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{LocalhostUrl}}/task/id/14",
+							"host": [
+								"{{LocalhostUrl}}"
+							],
+							"path": [
+								"task",
+								"id",
+								"14"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
